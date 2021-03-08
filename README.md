@@ -1,8 +1,11 @@
 # Spring Boot Playground
 
-The demonstration of the [Spring Boot Data Fixtures](https://github.com/piotrpolak/spring-boot-data-fixtures).
+This playground project is intended to be a demonstration of
+the [Spring Boot Data Fixtures](https://github.com/piotrpolak/spring-boot-data-fixtures) project and additionally be
+blueprint/reference for the fresh Spring Boot services.
 
-This project can also be used as a reference for a fresh Spring Boot project (blueprint).
+The project is intended to be developer friendly, highly testable and aligned with the API First principe. Individual
+features are listed below.
 
 ## Spring boot data fixtures demo
 
@@ -35,7 +38,11 @@ The full list of the generator options can be found at https://openapi-generator
 
 Changes comparing to the original templates:
 
-- Removed `@Api*` annotations (useless Swagger 2.0 annotations forcing you to add another useless dependency)
+- Removed `@Api*` annotations - these annotations come from Swagger 2.0 package. When using OpenAPI 3.0 to generate the
+  code, these annotations are not very useful and might lose come context (Swagger 2.0 VS OpenAPI 3.0). These
+  annotations are only useful when Swagger 2.0 file is generated from the code - which is against API First principle.
+  Assuming that OpenAPI definition is already part of the project, these annotations provide no extra value forcing you
+  to add additional dependency at the same time.
 - Removed `Generated` annotations
 - Added Lombok `@Data` annotation to models and removed `hashCode` and `equals` methods,
   moved `vendorExtensions.x-extra-annotation` from getter to property name
