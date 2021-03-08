@@ -19,6 +19,7 @@
         <testcontainers.version>1.14.3</testcontainers.version>
         <lombok.version>1.18.12</lombok.version>
         <spotless.version>2.6.1</spotless.version>
+        <openapi-generator-maven-plugin.version>5.0.1</openapi-generator-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -137,20 +138,17 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>
-                                ${project.basedir}/src/main/resources/static/swagger.json
-                            </inputSpec>
-                            <language>spring</language>
-
+                            <inputSpec>${project.basedir}/src/main/resources/static/swagger.json</inputSpec>
+                            <generatorName>spring</generatorName>
                             <output>${project.build.directory}/generated-sources/swagger</output>
                             <apiPackage>ro.polak.springbootplayground.api</apiPackage>
                             <modelPackage>ro.polak.springbootplayground.api.dto</modelPackage>
